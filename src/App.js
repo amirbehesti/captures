@@ -1,24 +1,31 @@
-import logo from './logo.svg';
+import React from 'react';
+import { Routes, Route } from 'react-router-dom';
+import ContextProvider from './context/ContextMain';
+import Content from './components/Content';
+import Header from './components/Header';
 import './App.css';
+import Search from './components/Search';
+import { useParams } from 'react-router-dom';
+export const topics = ["cool-art", "wildlife", "mountain", "motivational", "flowers", "sky"];
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ContextProvider>
+      <div className="App">
+        <Header />
+        <Routes>
+          <Route path='/' element={<Content/>} topic="random"/>
+          {
+            topics && topics.map((topic, index) => {
+              return (
+                <Route key={index} path={`/${topic}`} element={<Content topic={topic} />} />
+              )
+            })
+          }
+           <Route path="/:id" element={<Search />} />
+        </Routes>
+      </div>
+    </ContextProvider>
   );
 }
 
