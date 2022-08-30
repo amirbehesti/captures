@@ -14,7 +14,7 @@ const ContextProvider = props => {
 
   const searchItems = (query, pageNumber) => {
     setLoading(true);
-    if (prevSearch != query) {
+    if (prevSearch !== query) {
       setPrevSearch(query);
       setBtnBack(query);
 

@@ -14,7 +14,7 @@ const Header = () => {
 
     const handleInput = (e) => {
         setInputData(e.target.value);
-        if (e.target.value != '') {
+        if (e.target.value !== '') {
             setButtonState(false);
         } else {
             setButtonState(true);

@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { contextMain } from '../context/ContextMain';
 import ImageCards from './ImageCards';
 import FadeLoader from "react-spinners/FadeLoader";
@@ -7,17 +7,10 @@ import FadeLoader from "react-spinners/FadeLoader";
 const Content = ({ topic }) => {
 
   const { images, loading, searchItems, pageLimit, pageNumber, setPageNumber } = useContext(contextMain);
-  // const [currentPage, setCurrentPage] = useState(topic);
 
   useEffect(() => {
     searchItems(topic, pageNumber);
   }, [pageNumber, topic]);
-
-  // useEffect(() => {
-  //   if (currentPage != params.id) {
-  //     setCurrentPage(params.id)
-  //   }
-  // })FFff
 
   return (
     <>
