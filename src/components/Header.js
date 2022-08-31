@@ -27,7 +27,7 @@ const Header = () => {
         <div className='header'>
             <div className='logo'><Link to='/random'><img className='logoMain' src={logo} /></Link></div>
 
-            <div class="search">
+            <div className="search">
                 <input type='text' className="searchTerm" value={inputData} placeholder="What are you looking for?" onChange={handleInput} />
                 <Link to={`/${inputData}`}><button className="searchButton" disabled={buttonState}><FaSearch /></button></Link>
             </div>

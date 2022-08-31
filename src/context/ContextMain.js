@@ -3,8 +3,7 @@ import axios from "axios";
 import { apiKey } from "../access/key";
 export const contextMain = createContext();
 
-const ContextProvider = props => {
-  
+const ContextProvider = props => { 
   const [images, setImages] = useState([]);
   const [loading, setLoading] = useState(true);
   const [prevSearch, setPrevSearch] = useState('');
@@ -20,18 +19,18 @@ const ContextProvider = props => {
 
       axios
         .get(
-          `https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=${apiKey}&tags=${query}&per_page=24&page=${1}&format=json&nojsoncallback=1`
+          `https://api.unsplash.com/search/photos?client_id=${apiKey}&page=${pageNumber}&query=${query}&per_page=24&content_filter=high`
         )
         .then(response => {
           console.log(response);
-          setImages(response.data.photos.photo);
+          setImages(response.data.results);
 
-          if (response.data.photos.pages > 10) {
+          if (response.data.total_pages > 10) {
             setPageLimit(10);
             setPageNumber(1);
           } else {
-            setPageLimit(response.data.photos.pages);
-            if (response.data.photos.pages > 1) {
+            setPageLimit(response.data.total_pages);
+            if (response.data.total_pages > 1) {
               setPageNumber(1);
             }
           }
@@ -47,11 +46,11 @@ const ContextProvider = props => {
     } else {
       axios
         .get(
-          `https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=${apiKey}&tags=${query}&per_page=24&page=${pageNumber}&format=json&nojsoncallback=1`
+          `https://api.unsplash.com/search/photos?client_id=${apiKey}&page=${pageNumber}&query=${query}&per_page=24&content_filter=high`
         )
         .then(response => {
           console.log(response);
-          setImages(response.data.photos.photo);
+          setImages(response.data.results);
           setLoading(false);
         })
         .catch(error => {

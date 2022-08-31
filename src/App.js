@@ -5,8 +5,8 @@ import Content from './components/Content';
 import Header from './components/Header';
 import './App.css';
 import Search from './components/Search';
-import { useParams } from 'react-router-dom';
-export const topics = ["cool-art", "wildlife", "mountain", "motivational", "flowers", "sky"];
+import NotFound from './components/NotFound';
+export const topics = ["illustration", "wildlife", "mountain", "motivational", "flowers", "sky"];
 
 const App = () => {
   return (
@@ -14,7 +14,7 @@ const App = () => {
       <div className="App">
         <Header />
         <Routes>
-          <Route path='/' element={<Content/>} topic="random"/>
+          <Route path='/' element={<Content  topic="nature-scenery"/>}/>
           {
             topics && topics.map((topic, index) => {
               return (
@@ -23,6 +23,7 @@ const App = () => {
             })
           }
            <Route path="/:id" element={<Search />} />
+           <Route path="/*" element={<NotFound />} />
         </Routes>
       </div>
     </ContextProvider>
