@@ -10,7 +10,7 @@ const ImageCards = ({ results }) => {
       let id = image.id;
       let title = image.alt_description;
       let url = `${image.urls.small}`;
-      return <EachImage url={url} key={id} alt={title} />;
+      return <EachImage fullView={image} url={url} key={id} alt={title} />;
     });
   } else {
     noImage = <NotFound />;

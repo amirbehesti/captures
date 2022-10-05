@@ -3,26 +3,29 @@ import axios from "axios";
 import { apiKey } from "../access/key";
 export const contextMain = createContext();
 
-const ContextProvider = props => { 
+export const ContextProvider = props => { 
+  
   const [images, setImages] = useState([]);
   const [loading, setLoading] = useState(true);
   const [prevSearch, setPrevSearch] = useState('');
   const [btnBack, setBtnBack] = useState('');
   const [pageLimit, setPageLimit] = useState(0);
   const [pageNumber, setPageNumber] = useState(1);
+  const [selectedImg, setSelectedImg] = useState(null);
 
-  const searchItems = (query, pageNumber) => {
+
+  const searchItems = async (query, pageNumber) => {
     setLoading(true);
     if (prevSearch !== query) {
       setPrevSearch(query);
       setBtnBack(query);
 
-      axios
+    await axios
         .get(
           `https://api.unsplash.com/search/photos?client_id=${apiKey}&page=${pageNumber}&query=${query}&per_page=24&content_filter=high`
         )
         .then(response => {
-          console.log(response);
+          // console.log(response);
           setImages(response.data.results);
 
           if (response.data.total_pages > 10) {
@@ -44,12 +47,12 @@ const ContextProvider = props => {
           );
         });
     } else {
-      axios
+     await axios
         .get(
           `https://api.unsplash.com/search/photos?client_id=${apiKey}&page=${pageNumber}&query=${query}&per_page=24&content_filter=high`
         )
         .then(response => {
-          console.log(response);
+          // console.log(response);
           setImages(response.data.results);
           setLoading(false);
         })
@@ -64,11 +67,9 @@ const ContextProvider = props => {
 
 
   return (
-    <contextMain.Provider value={{ images, loading, btnBack, pageNumber, pageLimit, setPageNumber, searchItems }}>
+    <contextMain.Provider value={{ images, loading, btnBack, pageNumber, pageLimit, setPageNumber, searchItems,selectedImg, setSelectedImg }}>
       {props.children}
     </contextMain.Provider>
   );
 
 };
-
-export default ContextProvider;
