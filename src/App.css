@@ -24,7 +24,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 85vh;
+  height: auto;
   animation: zoom-in-zoom-out 1s ease;
   transform: scale(1);
   opacity: 1;
@@ -43,8 +43,8 @@
 }
 .pop--image{
   z-index: 3;
-  width: 90%;
-  height: 90%;
+  width: 50%;
+  height: 50%;
 }
 
 .search {
@@ -151,8 +151,8 @@
     transform:none;
   }
   .pop--image{
-    width: 70%;
-    height: 70%;
+    width: 60%;
+    height: 60%;
   }
 }
 /*----------------------------------------- ---- */
