@@ -14,7 +14,7 @@
   align-items: center;
   z-index: 2;
   margin-top: -20px;
-  background-color: rgba(0,0,0,0.8);
+  background-color: rgba(0,0,0,0.6);
   width: 100vw;
   height: 100vh;
 }
@@ -24,7 +24,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  height: auto;
+  height: 80vh;
   animation: zoom-in-zoom-out 1s ease;
   transform: scale(1);
   opacity: 1;
@@ -42,9 +42,8 @@
   }
 }
 .pop--image{
-  z-index: 3;
-  width: 50%;
-  height: 50%;
+  width: 70%;
+  height: 80%;
 }
 
 .search {
@@ -150,9 +149,12 @@
   .card--image:hover{
     transform:none;
   }
+  .pop-up-img-div{
+    height: auto;
+  }
   .pop--image{
     width: 60%;
-    height: 60%;
+    height: 50%;
   }
 }
 /*----------------------------------------- ---- */
