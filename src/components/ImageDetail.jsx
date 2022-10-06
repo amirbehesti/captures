@@ -1,5 +1,5 @@
 function ImageDetail({selectedImg,setSelectedImg}) {
-    console.log(selectedImg)
+    // console.log(selectedImg)
   return (
     <div className="pop-up" onClick={()=>setSelectedImg(null)}>
          <div className="pop-up-img-div">
